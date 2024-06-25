@@ -21,11 +21,12 @@ def view_playlist_tracks(sp, playlist_id):
         track = item['track']
         print(f"{track['name']} by {track['artists'][0]['name']}")
 
+
 def create_playlist(sp, name, description=""):
     """ Creates a new playlist for a user """
     # Retrieve the current user's ID from Spotify
     user_id = sp.current_user()['id']
-
+    
     # Create a new playlist with the provided name and description
     playlist = sp.user_playlist_create(user=user_id, name=name, description=description)
     print(f"Created Playlist: {playlist['name']} - {playlist['id']}")
@@ -37,15 +38,30 @@ def add_tracks_to_playlist(sp, playlist_id, track_ids):
     sp.playlist_add_items(playlist_id, track_ids)
     print(f"Added tracks to Playlist {playlist_id}")
 
+def recommend_tracks(sp, seed_tracks, limit=10):
+    """ Recommend tracks based on seed tracks """
+    # Get recommendations based on seed tracks
+    results = sp.recommendations(seed_tracks=seed_tracks, limit=limit)
+    print("Recommended Tracks:")
+    for track in results['tracks']:
+        print(f"{track['name']} by {track['artists'][0]['name']}")
+
+def get_playlist_track_ids(sp, playlist_id):
+    """ Retrieve track IDs from a playlist """
+    track_ids = []
+    results = sp.playlist_tracks(playlist_id)
+    for item in results['items']:
+        track_ids.append(item['track']['id'])
+    return track_ids
+
 def main_menu():
-    """ Displays the main menu of the application """
-    # Print the main menu options to the user
     print("\nSpotify Playlist Manager")
     print("1 - List my playlists")
     print("2 - View a playlist's tracks")
     print("3 - Create a new playlist")
     print("4 - Add tracks to a playlist")
-    print("5 - Exit")
+    print("5 - Get recommendations for a playlist")
+    print("6 - Exit")
 
 def main():
     """ Main function to handle user interactions """
@@ -76,6 +92,10 @@ def main():
             track_ids = input("Enter track IDs, separated by commas: ").split(',')
             add_tracks_to_playlist(sp, playlist_id, track_ids)
         elif choice == '5':
+            playlist_id = input("Enter the Playlist ID for recommendations: ")
+            seed_tracks = get_playlist_track_ids(sp, playlist_id)
+            recommend_tracks(sp, seed_tracks[:5])  # Use up to 5 tracks as seeds
+        elif choice == '6':
             print("Exiting...")
             break
         else:
