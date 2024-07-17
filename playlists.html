@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block content %}
+    <!-- List of user's playlists -->
+    <h1>Your Playlists</h1>
+    <ul class="list-group">
+      {% for playlist in playlists %}
+        <li class="list-group-item playlist-item">
+          {% if playlist.image_url %}
+            <img src="{{ playlist.image_url }}" alt="{{ playlist.name }}" class="img-thumbnail" style="width: 50px; height: 50px; margin-right: 10px;">
+          {% endif %}
+          <a href="{{ url_for('view_playlist_tracks', playlist_id=playlist['id']) }}">{{ playlist['name'] }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+{% endblock %}

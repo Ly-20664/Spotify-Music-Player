@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <!-- Search form for tracks -->
+    <h2>Search Tracks</h2>
+    <form method="POST" action="/search_results">
+        <div class="form-group">
+            <label for="query">Track Name</label>
+            <input type="text" class="form-control" id="query" name="query" placeholder="Enter track name">
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+{% endblock %}
