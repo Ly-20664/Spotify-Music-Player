@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify Manager</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="light-mode">
+    <!-- Navigation bar with links and search form -->
+    <nav class="navbar navbar-expand-lg navbar-light navbar-light-mode" id="navbar">
+        <div>
+            <a class="navbar-brand" href="{{ url_for('home') }}">Spotify Manager</a>
+            <div class="developer-credit">Developed by Justin Ly</div>
+        </div>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <!-- Links to different pages -->
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('list_playlists') }}">Playlists</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('recommended_songs') }}">Recommended Songs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('create_playlist_form') }}">Create Playlist</a>
+                </li>
+            </ul>
+            <!-- Search form for tracks -->
+            <form class="form-inline" action="{{ url_for('search_results') }}" method="post">
+                <input class="form-control mr-sm-2" type="search" name="query" placeholder="Search Tracks" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <!-- Button to toggle dark mode -->
+            <button id="theme-toggle" class="btn btn-secondary ml-2">Toggle Dark Mode</button>
+        </div>
+    </nav>
+    <!-- Main content container -->
+    <div class="container mt-4" id="content">
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <div class="alert alert-warning" role="alert">
+              {{ messages[0] }}
+            </div>
+          {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
