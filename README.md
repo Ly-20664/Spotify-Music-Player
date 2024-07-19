@@ -54,6 +54,13 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(
 ```sh
 python spotify_playlist_manager.py
 ```
+## Images
+Light Mode-
+<img width="1440" alt="Screenshot 2024-07-19 at 1 47 29 PM" src="https://github.com/user-attachments/assets/96aedeb1-e5d3-4e7f-b3aa-10eec6b731f9">
+
+Dark Mode-
+<img width="1440" alt="Screenshot 2024-07-19 at 1 47 16 PM" src="https://github.com/user-attachments/assets/8de2daee-cabc-4b5e-a134-c9a85508f185">
+
 
 ## Contribution
 This project was developed by Justin Ly. While this is a personal project, suggestions and contributions are welcome. Please feel free to fork this repository and submit pull requests.
