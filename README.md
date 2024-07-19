@@ -4,16 +4,16 @@
 The Spotify Playlist Manager is a Python application that interfaces with the Spotify Web API to manage user playlists. This tool allows users to list their playlists, view specific tracks within those playlists, create new playlists, add tracks to playlists, and receive song recommendations. The application utilizes the Spotipy library, which simplifies the use of the Spotify Web API.
 
 ## Features
-- **List User Playlists: Display all playlists associated with the user's Spotify account.
-- **View Playlist Tracks: Show all tracks within a specific playlist.
+- **List User Playlists**: Display all playlists associated with the user's Spotify account.
+- **View Playlist Tracks**: Show all tracks within a specific playlist.
 - **Create a New Playlist**: Allow users to create new playlists with a custom name and description.
 - **Add Tracks to a Playlist**: Add specified tracks to a chosen playlist.
 - **Get Recommendations for a Playlist**: Generate song recommendations based on the tracks in a specified playlist.
-- **Fetch Top Tracks of the Month: Retrieve and display the user's top month tracks.
-- **Fetch Recently Played Tracks: Retrieve and display the user's most recently played tracks.
-- **Search for Tracks: Search for tracks based on a user query.
-- **Get Recommended Songs: Generate song recommendations based on the user's top tracks or artists.
-- **Light mode & Dark mode for user preferences 
+- **Fetch Top Tracks of the Month**: Retrieve and display the user's top month tracks.
+- **Fetch Recently Played Tracks**: Retrieve and display the user's most recently played tracks.
+- **Search for Tracks**: Search for tracks based on a user query.
+- **Get Recommended Songs**: Generate song recommendations based on the user's top tracks or artists.
+- **Light mode & Dark mode**: Allow user to toggle different colors and contrast for user preferences.
 
 ## Prerequisites
 - Python 3.6 or higher
@@ -62,55 +62,55 @@ python spotify_playlist_manager.py
 
 Function Descriptions
 
-1. list_user_playlists(sp)
+1. **list_user_playlists(sp)**
 This function retrieves and prints a list of all playlists associated with the user's Spotify account.
 
-2. view_playlist_tracks(sp, playlist_id)
+2. **view_playlist_tracks(sp, playlist_id)**
 This function takes a playlist ID as an argument and prints the tracks within that specific playlist.
 
-3. create_new_playlist(sp, user_id, name, description)
+3. **create_new_playlist(sp, user_id, name, description)**
 This function creates a new playlist with the provided name and description for the user.
 
-4. add_tracks_to_playlist(sp, playlist_id, track_ids)
+4. **add_tracks_to_playlist(sp, playlist_id, track_ids)**
 This function adds the specified track IDs to a chosen playlist.
 
-5. get_playlist_recommendations(sp, seed_tracks, limit=10)
+5. **get_playlist_recommendations(sp, seed_tracks, limit=10)**
 This function generates and prints song recommendations based on the provided track IDs.
 
-6. login()
+6. **login()**
 This function initiates the OAuth flow by redirecting the user to the Spotify login page.
 
-7. callback()
+7. **callback()**
 This function handles the redirect from Spotify after the user has logged in and sets the access token in the session.
 
-8. home()
+8. **home()**
 This function retrieves the user's top tracks of the month and most recently played tracks and renders them on the home page.
 
-9. get_token()
+9. **get_token()**
 This function retrieves the access token from the session and refreshes it if it has expired.
 
-10. list_playlists()
+10. **list_playlists()**
 This function retrieves and displays the user's playlists.
 
-11. view_playlist_tracks(playlist_id)
+11. **view_playlist_tracks(playlist_id)**
 This function retrieves and displays the tracks in a specific playlist and provides recommendations based on the tracks in the playlist.
 
-12. create_playlist_form()
+12. **create_playlist_form()**
 This function renders the form to create a new playlist.
 
-13. create_playlist_action()
+13. **create_playlist_action()**
 This function handles the form submission to create a new playlist.
 
-14. search_results()
+14. **search_results()**
 This function handles the search query and displays the search results.
 
-15. add_track_to_playlist(track_id)
+15. **add_track_to_playlist(track_id)**
 This function displays the form to add a track to a playlist.
 
-16. add_track_to_playlist_action(track_id)
+16. **add_track_to_playlist_action(track_id)**
 This function handles the form submission to add a track to a playlist.
 
-17. recommended_songs()
+17. **recommended_songs()**
 This function retrieves and displays song recommendations based on the user's top tracks or artists.
 
 
